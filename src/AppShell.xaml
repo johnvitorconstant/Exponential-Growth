@@ -4,11 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ExponentialGrowth"
-    Shell.FlyoutBehavior="Disabled">
+     xmlns:pages="clr-namespace:ExponentialGrowth.Pages"
+    
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Forms" Icon="dotnet_d_inverted">
+        <ShellContent Title="New Day" Icon="dotnet_a.png"
+        ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="New Workout" Icon="dotnet_b.png"
+        ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="New Exercise" Icon="dotnet_c.png"
+        ContentTemplate="{DataTemplate pages:ExerciseForm}"/>
+    </FlyoutItem>
 
+    <FlyoutItem Title="Views" Icon="dotnet_d_inverted">
+        <ShellContent Title="View Day" Icon="dotnet_a.png"
+        ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="View Workout" Icon="dotnet_b.png"
+        ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="View Exercise" Icon="dotnet_c.png"
+        ContentTemplate="{DataTemplate pages:ExerciseView}"/>
+    </FlyoutItem>
+    
 </Shell>
