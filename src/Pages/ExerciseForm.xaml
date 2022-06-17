@@ -3,9 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExponentialGrowth.Pages.ExerciseForm"
              Title="ExerciseForm">
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-    </StackLayout>
+    <Grid Padding="5" RowSpacing="1" ColumnSpacing="1">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry x:Name="formName"
+               Grid.Row="0"
+           Placeholder="Name" />
+
+        <Entry x:Name="formCategory"
+                Grid.Row="1"
+           Placeholder="Category" />
+
+        <Entry x:Name="formMinimumLoad"
+                Grid.Row="3"
+               x:DataType="x:Double"
+               
+           Placeholder="Minimum Load" />
+
+        <Entry x:Name="formMaximumLoad"
+                Grid.Row="2"
+               x:DataType="x:Double"
+           Placeholder="Maximum Load" />
+
+        <Button Text="Add"
+                Clicked="btnAddOnClick"
+                x:Name="btnAdd"
+            Grid.Row="4"/>
+
+        <Button Text="Get All"
+                Clicked="btnGetOnClick"
+                x:Name="btnGet"
+                Grid.Row="5"/>
+
+        <Label x:Name="statusMessage"
+                 Grid.Row="6" />
+
+
+
+
+    </Grid>
 </ContentPage>

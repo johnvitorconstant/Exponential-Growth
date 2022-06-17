@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ExponentialGrowth.Models
 {
-    internal class Exercise
+    [Table("exercises")]
+    public class Exercise
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

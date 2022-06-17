@@ -1,4 +1,6 @@
-﻿namespace ExponentialGrowth;
+﻿using ExponentialGrowth.Repositories;
+
+namespace ExponentialGrowth;
 
 public static class MauiProgram
 {
@@ -13,6 +15,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        string dbPath = FileAccessHelper.GetLocalFilePath("exercises_v1.db3");
+        builder.Services.AddSingleton<ExerciseRepository>(s => ActivatorUtilities.CreateInstance<ExerciseRepository>(s, dbPath));
+
+        return builder.Build();
 	}
 }
