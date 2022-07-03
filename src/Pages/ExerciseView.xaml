@@ -3,9 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExponentialGrowth.Pages.ExerciseView"
              Title="ExerciseView">
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-    </StackLayout>
+    
+    
+    <VerticalStackLayout>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" x:Name="refreshView" 
+                     Command="{Binding LoadDataCommand}">
+            
+            <CollectionView  Margin="30,20,30,30"
+                             ItemsSource="{Binding Parts}"                             
+                             SelectedItem="{Binding SelectedPart, Mode=TwoWay}"
+                             SelectionChangedCommand="{Binding PartSelectedCommand}"
+                             SelectionMode="Single">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="15,10" Margin="10,5,10,5">
+                            <Label Text="{Binding PartID, StringFormat='ID: {0}'}" FontSize="Title" Margin="0,0,0,20"/>
+                            <Label Text="{Binding PartName, StringFormat='Part Name: {0}'}"/>
+                            <Label Text="{Binding PartType, StringFormat='Part Type: {0}'}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+                
+            </CollectionView>
+            
+            
+        </RefreshView>
+
+    </VerticalStackLayout>
+    
+    
 </ContentPage>

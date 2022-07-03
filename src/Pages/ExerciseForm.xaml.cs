@@ -9,16 +9,6 @@ public partial class ExerciseForm : ContentPage
         InitializeComponent();
     }
 
-    void btnGetOnClick(object sender, EventArgs e)
-    {
-
-        var exercises = App.ExerciseRepository.GetAll();
-
-        foreach (var exercise in exercises)
-        {
-            Console.WriteLine($"{exercise} \n");
-        }
-    }
 
     void btnAddOnClick(object sender, EventArgs e)
     {
@@ -34,9 +24,10 @@ public partial class ExerciseForm : ContentPage
             };
             App.ExerciseRepository.Add(exercicio);
         }
-        catch
+        catch(Exception ex)
         {
-            statusMessage.Text = "Dados inválidos";
+            statusMessage.Text = ex.ToString();
         }
     }
+
 }

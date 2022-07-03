@@ -45,10 +45,7 @@
                 x:Name="btnAdd"
             Grid.Row="4"/>
 
-        <Button Text="Get All"
-                Clicked="btnGetOnClick"
-                x:Name="btnGet"
-                Grid.Row="5"/>
+     
 
         <Label x:Name="statusMessage"
                  Grid.Row="6" />

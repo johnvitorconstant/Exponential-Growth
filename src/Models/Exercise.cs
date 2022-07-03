@@ -14,9 +14,9 @@ namespace ExponentialGrowth.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [MaxLength(250), NotNull]
+        [MaxLength(250), NotNull, Unique]
         public String Name { get; set; }
-        
+
         [MaxLength(250), NotNull]
         public String Category { get; set; }
         public double MinimumLoad { get; set; }
@@ -31,11 +31,13 @@ namespace ExponentialGrowth.Models
 
         public Exercise(string name, string category, double minimumLoad, double maximumLoad)
         {
-            Name = name;
-            Category = category;
+            Name = name.Trim();
+            Category = category.Trim();
             MinimumLoad = minimumLoad;
             MaximumLoad = maximumLoad;
         }
+
+
 
         public override string ToString()
         {
