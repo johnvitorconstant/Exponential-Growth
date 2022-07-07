@@ -2,39 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExponentialGrowth.Pages.ExerciseView"
+             xmlns:local="clr-namespace:ExponentialGrowth.Models"
              Title="ExerciseView">
-    
-    
-    <VerticalStackLayout>
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" x:Name="refreshView" 
-                     Command="{Binding LoadDataCommand}">
+
+   
+        
+    <StackLayout>
+
+        <RefreshView IsRefreshing="{Binding isRefreshing}">
             
-            <CollectionView  Margin="30,20,30,30"
-                             ItemsSource="{Binding Parts}"                             
-                             SelectedItem="{Binding SelectedPart, Mode=TwoWay}"
-                             SelectionChangedCommand="{Binding PartSelectedCommand}"
-                             SelectionMode="Single">
-                
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Padding="15,10" Margin="10,5,10,5">
-                            <Label Text="{Binding PartID, StringFormat='ID: {0}'}" FontSize="Title" Margin="0,0,0,20"/>
-                            <Label Text="{Binding PartName, StringFormat='Part Name: {0}'}"/>
-                            <Label Text="{Binding PartType, StringFormat='Part Type: {0}'}"/>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                
-                
-            </CollectionView>
+        <CollectionView Margin="30,20,30,30"
+                        ItemsSource="{Binding Exercises}">
             
-            
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" RowSpacing="1" ColumnSpacing="1">
+                        <Label Text="{Binding Name}" FontAttributes="Bold" HorizontalOptions="Start" />
+                        <Label Grid.Column="1" Text="{Binding Category}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="2" Text="{Binding MinimumLoad}" HorizontalTextAlignment="End" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+        </CollectionView>
         </RefreshView>
 
-    </VerticalStackLayout>
-    
-    
+    </StackLayout>
+
+        
 </ContentPage>

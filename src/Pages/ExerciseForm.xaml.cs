@@ -23,6 +23,7 @@ public partial class ExerciseForm : ContentPage
 
             };
             App.ExerciseRepository.Add(exercicio);
+            statusMessage.Text = App.ExerciseRepository.StatusMessage;
         }
         catch(Exception ex)
         {

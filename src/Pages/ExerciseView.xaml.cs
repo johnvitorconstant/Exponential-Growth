@@ -1,12 +1,13 @@
+using ExponentialGrowth.ViewModels;
+
 namespace ExponentialGrowth.Pages;
 
 public partial class ExerciseView : ContentPage
 {
 	public ExerciseView()
 	{
-
-
-
-		InitializeComponent();
+       
+        InitializeComponent();
+       BindingContext = new ExerciseViewModel();
 	}
 }

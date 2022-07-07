@@ -41,7 +41,7 @@ namespace ExponentialGrowth.Models
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Name;
         }
     }
 }
