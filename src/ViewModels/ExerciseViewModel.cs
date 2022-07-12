@@ -15,7 +15,6 @@ namespace ExponentialGrowth.ViewModels
     {
 
        
-       // private ExerciseRepository _exerciseRepository;
 
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -60,7 +59,7 @@ namespace ExponentialGrowth.ViewModels
         public ExerciseViewModel()
         {
             _exercises = new ObservableCollection<Exercise>();
-            LoadDataCommand = new Command( () =>  LoadData());
+            LoadDataCommand = new Command( async () => await  LoadData());
             ExerciseSelectedCommand = new Command(async () =>await ExerciseSelected());
             AddNewExerciseCommand = new Command(async () => await Shell.Current.GoToAsync("exerciseform"));
 
