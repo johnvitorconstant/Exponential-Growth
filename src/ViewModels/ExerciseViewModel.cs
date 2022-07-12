@@ -64,7 +64,6 @@ namespace ExponentialGrowth.ViewModels
             ExerciseSelectedCommand = new Command(async () =>await ExerciseSelected());
             AddNewExerciseCommand = new Command(async () => await Shell.Current.GoToAsync("exerciseform"));
 
-            //MessagingCenter.Subscribe<>
             Task.Run(LoadData);
 
         }
@@ -97,7 +96,7 @@ namespace ExponentialGrowth.ViewModels
 
         public ICommand AddNewExerciseCommand { get; private set; }
 
-        public void LoadData()
+        public async Task LoadData()
         {
             if (IsBusy) return;
 
@@ -107,7 +106,7 @@ namespace ExponentialGrowth.ViewModels
                 IsBusy = true;
 
                 
-                var exercisesCollection = App.ExerciseRepository.GetAll();
+                var exercisesCollection =await App.ExerciseRepository.GetAll();
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {

@@ -5,8 +5,6 @@
              xmlns:local="clr-namespace:ExponentialGrowth.Models"
              Title="ExerciseView">
 
-   
-        
     <StackLayout>
 
         <RefreshView IsRefreshing="{Binding isRefreshing}">

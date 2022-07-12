@@ -10,7 +10,7 @@ public partial class ExerciseForm : ContentPage
     }
 
 
-    void btnAddOnClick(object sender, EventArgs e)
+    async void btnAddOnClick(object sender, EventArgs e)
     {
         try
         {
@@ -22,7 +22,7 @@ public partial class ExerciseForm : ContentPage
                 MaximumLoad = Convert.ToDouble(formMaximumLoad.Text),
 
             };
-            App.ExerciseRepository.Add(exercicio);
+           await App.ExerciseRepository.Add(exercicio);
             statusMessage.Text = App.ExerciseRepository.StatusMessage;
         }
         catch(Exception ex)

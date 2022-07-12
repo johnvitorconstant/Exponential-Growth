@@ -12,7 +12,7 @@ namespace ExponentialGrowth.Repositories
         {
             string _dbPath;
             public string StatusMessage { get; set; }
-            private SQLiteConnection conn;
+            private SQLiteAsyncConnection conn;
 
 
             public Repository(string dbPath)
@@ -20,20 +20,20 @@ namespace ExponentialGrowth.Repositories
                 _dbPath = dbPath;
             }
 
-            private void Init()
+            private async Task Init()
             {
                 if (conn != null) return;
-                conn = new SQLiteConnection(_dbPath);
-                conn.CreateTable<T>();
+                conn = new SQLiteAsyncConnection(_dbPath);
+                await conn.CreateTableAsync<T>();
             }
 
-            public void Add(T entity)
+            public async Task Add(T entity)
             {
                 int result = 0;
                 try
                 {
-                    Init();
-                    result = conn.Insert(entity);
+                   await Init();
+                    result = await conn.InsertAsync(entity);
                     StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, entity);
                 }
                 catch (Exception ex)
@@ -42,13 +42,13 @@ namespace ExponentialGrowth.Repositories
                 }
             }
 
-            public List<T> GetAll()
+            public async Task< List<T>> GetAll()
             {
 
                 try
                 {
-                    Init();
-                    return conn.Table<T>().ToList();
+                await Init();
+                    return await conn.Table<T>().ToListAsync();
                 }
                 catch (Exception ex)
                 {
